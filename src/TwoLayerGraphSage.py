@@ -19,7 +19,7 @@ import sys
 sys.path.insert(1,'../src')
 from DataLoader import RGGDataset
 
-DL = RGGDataset(root = '../input')
+DL = RGGDataset(root = '//home/groups/ai/maskey/input')
 
 dataset = DL.get(101)
 
@@ -122,8 +122,8 @@ class cGCN(torch.nn.Module):
             h = lambda x: g(x, radius, position)
             l = lambda x: indicator_fct(x, radius, position)
             
-            int_of_f = simp.integrate(h,dim=2,N=1000,integration_domain = [[0,1],[0,1]])
-            measure_Ball = simp.integrate(l,dim=2,N=1000,integration_domain = [[0,1],[0,1]])
+            int_of_f = simp.integrate(h,dim=2,N=10000,integration_domain = [[0,1],[0,1]])
+            measure_Ball = simp.integrate(l,dim=2,N=10000,integration_domain = [[0,1],[0,1]])
         
             return torch.tensor(self.graphSage.lin_l.weight*int_of_f/measure_Ball)
         
