@@ -27,7 +27,7 @@ model = GCN()
 model.load_state_dict(torch.load( '../models/GCNTwoLayersGraphSage'))
 
 cGCNN = cGCN()
-model.load_state_dict(torch.load( '../models/cGCNTwoLayersGraphSage'))
+cGCNN.load_state_dict(torch.load( '../models/cGCNTwoLayersGraphSage'))
 
 fct = lambda x: x[:,0]*x[:,1]
 L2Errors = []

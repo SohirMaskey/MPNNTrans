@@ -27,11 +27,12 @@ model = GCN()
 model.load_state_dict(torch.load( '../models/GCNTwoLayersGraphSage'))
 
 cGCNN = cGCN()
-model.load_state_dict(torch.load( '../models/cGCNTwoLayersGraphSage'))
+cGCNN.load_state_dict(torch.load( '../models/cGCNTwoLayersGraphSage'))
 
 
 L2Errors = []
 start = time.time()
+
 low_pass = lambda x:  (1+(torch.tensor(x[:,0]**2 + x[:,1]**2))).pow_(-1)
 
 for i in range(1, 1002, 100):
